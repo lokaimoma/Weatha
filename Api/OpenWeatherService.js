@@ -15,3 +15,15 @@ const getCurrentWeather = async (latitude, longitude) => {
     dt: json.dt,
   };
 };
+
+const getCurrentWeatherWithCityName = async (cityName) => {
+  const result = await fetch(`${CURRENT_WEATHER_URL}&q=${cityName}`);
+
+  const json = await result.json();
+  return {
+    coord: json.coord,
+    weather: json.weather,
+    main: json.main,
+    dt: json.dt,
+  };
+};
