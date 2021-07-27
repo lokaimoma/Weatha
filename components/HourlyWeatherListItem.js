@@ -9,7 +9,7 @@ const HourlyWeatherListItem = (props) => {
         height={50}
         alt="Weather Icon"
       />
-      <h5>{props.temperatur}</h5>
+      <h5>{props.temperature}</h5>
     </div>
   );
 };
