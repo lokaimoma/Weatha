@@ -2,7 +2,7 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 const CURRENT_WEATHER_URL = `${BASE_URL}/weather?appid=${process.env.API_KEY}&units=metric`;
 const ONE_CALL_URL = `${BASE_URL}/onecall?appid=${process.env.API_KEY}&units=metric`;
 
-const getCurrentWeather = async (latitude, longitude) => {
+export default async function getCurrentWeather(latitude, longitude) {
   const result = await fetch(
     `${CURRENT_WEATHER_URL}&lat=${latitude}&lon=${longitude}`
   );
@@ -16,9 +16,9 @@ const getCurrentWeather = async (latitude, longitude) => {
     timezone: json.timezone,
     cityName: json.name,
   };
-};
+}
 
-const getCurrentWeatherWithCityName = async (cityName) => {
+export async function getCurrentWeatherWithCityName(cityName) {
   const result = await fetch(`${CURRENT_WEATHER_URL}&q=${cityName}`);
 
   const json = await result.json();
@@ -30,9 +30,9 @@ const getCurrentWeatherWithCityName = async (cityName) => {
     timezone: json.timezone,
     cityName: json.name,
   };
-};
+}
 
-const getHourlyForcast = async (latitude, longitude) => {
+export async function getHourlyForcast(latitude, longitude) {
   const result = await fetch(
     `${ONE_CALL_URL}&lat=${latitude}&lon=${longitude}&exclude=current,minutely,daily,alerts`
   );
@@ -50,6 +50,4 @@ const getHourlyForcast = async (latitude, longitude) => {
       weather: weatherData.weather,
     })),
   };
-};
-
-export default getCurrentWeather;
+}
