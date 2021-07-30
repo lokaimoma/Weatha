@@ -14,6 +14,7 @@ const getCurrentWeather = async (latitude, longitude) => {
     main: json.main,
     dt: json.dt,
     timezone: json.timezone,
+    cityName: json.name,
   };
 };
 
@@ -27,6 +28,7 @@ const getCurrentWeatherWithCityName = async (cityName) => {
     main: json.main,
     dt: json.dt,
     timezone: json.timezone,
+    cityName: json.name,
   };
 };
 
