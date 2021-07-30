@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getLocationData from "../services/LocationService";
-import getWeatherByLatLng from "../useCases/GetWeatherByLatLng";
+import fetcher from "../services/Fetcher";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -11,14 +11,11 @@ export default function Home() {
     if ("error" in currentLocation) {
       alert("Error Fetching Location");
     } else if ("latitude" in currentLocation) {
-      getWeatherByLatLng(currentLocation.latitude, currentLocation.longitude)
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          alert("Error accessing server");
-          console.log(error);
-        });
+      fetcher(
+        `/api/weather/${currentLocation.latitude}/${currentLocation.longitude}`
+      ).then((data) => {
+        console.log("Data: ", data);
+      });
     }
     // TODO: Stop spinners
   }, [currentLocation.latitude]);
