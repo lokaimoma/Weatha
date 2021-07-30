@@ -6,6 +6,5 @@ export default async function getWeatherByLatLng(latitude, longitude) {
   const hour = date.getHours();
   result["hour"] = hour;
   result["dateTime"] = date.toLocaleString();
-  console.log(result);
   return result;
 }

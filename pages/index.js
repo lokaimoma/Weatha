@@ -9,6 +9,7 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [currentLocation, setCurrentLocation] = useState({});
   const [weatherData, setWeatherData] = useState({});
+  const [hourlyForeCast, setHourlyForeCast] = useState({});
   const [isFetching, setIsFetching] = useState(true);
   const [errorOccured, setErrorOccured] = useState(false);
 
@@ -21,14 +22,24 @@ export default function Home() {
         `/api/weatherData/current/${currentLocation.latitude}/${currentLocation.longitude}`
       )
         .then((data) => {
-          console.log(data);
           setWeatherData(data);
-          setIsFetching(false);
+          fetcher(
+            `/api/weatherData/hourly/${currentLocation.latitude}/${currentLocation.longitude}`
+          )
+            .then((data) => {
+              setHourlyForeCast(data);
+              setIsFetching(false);
+            })
+            .catch((error) => {
+              setErrorOccured(true);
+              setIsFetching(false);
+              console.log(error);
+            });
         })
         .catch((error) => {
           setIsFetching(false);
-          setErrorOccured(true);
           console.log(error);
+          setErrorOccured(true);
         });
     }
     // TODO: Stop spinners
@@ -47,6 +58,7 @@ export default function Home() {
             dateTime={weatherData.dateTime}
             weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
             weatherState={weatherData.weather[0].description}
+            hourlyData={hourlyForeCast}
           />
         )}
       </section>
