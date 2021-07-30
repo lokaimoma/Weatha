@@ -1,9 +1,9 @@
-import { Image } from "next/image";
+import Image from "next/image";
 
 const WeatherSummary = (props) => {
   return (
     <div>
-      <h2>{props.temperature}°</h2>
+      <h2>{props.temperature}</h2>
       <div>
         <h3>{props.cityName}</h3>
         <p>{props.dateTime}</p>
@@ -22,4 +22,3 @@ const WeatherSummary = (props) => {
 };
 
 export default WeatherSummary;
-props;

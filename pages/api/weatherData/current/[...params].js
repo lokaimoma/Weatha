@@ -1,4 +1,4 @@
-import getWeatherByLatLng from "../../../useCases/GetWeatherByLatLng";
+import getWeatherByLatLng from "../../../../useCases/GetWeatherByLatLng";
 
 export default function getWEatherByLatitudeLongitude(req, res) {
   const { params } = req.query;
