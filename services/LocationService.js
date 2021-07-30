@@ -1,4 +1,4 @@
-function getLocationData() {
+export default function getLocationData() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (postion) => {
