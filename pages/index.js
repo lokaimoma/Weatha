@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Image } from "next/image";
 import SearchBar from "../components/SearchBar";
+import WeatherContent from "../components/WeatherContent";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
 
 export default function Home() {
   const [query, setQuery] = useState("");
   const [currentLocation, setCurrentLocation] = useState({});
+  const [weatherData, setWeatherData] = useState({});
+  const [isFetching, setIsFetching] = useState(true);
+  const [errorOccured, setErrorOccured] = useState(false);
 
   useEffect(() => {
     getLocationData(setCurrentLocation);
@@ -14,10 +18,18 @@ export default function Home() {
       alert("Error Fetching Location");
     } else if ("latitude" in currentLocation) {
       fetcher(
-        `/api/weather/${currentLocation.latitude}/${currentLocation.longitude}`
-      ).then((data) => {
-        console.log("Data: ", data);
-      });
+        `/api/weatherData/current/${currentLocation.latitude}/${currentLocation.longitude}`
+      )
+        .then((data) => {
+          console.log(data);
+          setWeatherData(data);
+          setIsFetching(false);
+        })
+        .catch((error) => {
+          setIsFetching(false);
+          setErrorOccured(true);
+          console.log(error);
+        });
     }
     // TODO: Stop spinners
   }, [currentLocation.latitude]);
@@ -26,22 +38,20 @@ export default function Home() {
     <div>
       <section>
         <h5 className="logo">weatha</h5>
-        <div className="weatherContent">
-          <div className="weatherSummary">
-            <h1 className="tempearature"></h1>
-            <div className="dateTimeLoc">
-              <h2 className="location"></h2>
-              <p className="dateTime"></p>
-            </div>
-            <div className="weatherRep">
-              {/* <Image /> */}
-              <p className="weatherDescription"></p>
-            </div>
-          </div>
-        </div>
+        {isFetching && <p>Loading</p>}
+        {errorOccured && <p>Error</p>}
+        {!isFetching && !errorOccured && (
+          <WeatherContent
+            cityName={weatherData.cityName}
+            temperature={`${weatherData.main.temp} °C`}
+            dateTime={weatherData.dateTime}
+            weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+            weatherState={weatherData.weather[0].description}
+          />
+        )}
       </section>
       <aside>
-        <SearchBar />
+        <SearchBar query={query} setQuery={setQuery} submitHandler={() => {}} />
       </aside>
     </div>
   );
