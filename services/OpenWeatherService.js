@@ -49,3 +49,5 @@ const getHourlyForcast = async (latitude, longitude) => {
     })),
   };
 };
+
+export default getCurrentWeather;
