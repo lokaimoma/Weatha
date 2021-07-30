@@ -42,7 +42,7 @@ export async function getHourlyForcast(latitude, longitude) {
     timezone: json.timezone_offset,
     hourly: json.hourly.map((weatherData) => ({
       dt: weatherData.dt,
-      temperatur: weatherData.temp,
+      temperature: weatherData.temp,
       feelsLike: weatherData.feels_like,
       pressure: weatherData.pressure,
       humidity: weatherData.humidity,

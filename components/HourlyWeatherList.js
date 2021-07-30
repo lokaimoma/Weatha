@@ -1,13 +1,13 @@
 import HourlyWeatherListItem from "./HourlyWeatherListItem";
 
-const HourlyWeatherList = ({ hourlyWeatherList }) => {
+const HourlyWeatherList = ({ hourlyData }) => {
   return (
     <div>
-      {hourlyWeatherList.map((weatherData) => (
+      {hourlyData.hourly.map((weatherData) => (
         <HourlyWeatherListItem
           key={weatherData.hour}
           hour={weatherData.hour}
-          weatherIcon={weatherData.icon}
+          weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
           temperature={weatherData.temperature}
         />
       ))}
