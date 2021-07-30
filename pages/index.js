@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Image } from "next/image";
+import SearchBar from "../components/SearchBar";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
 
@@ -22,7 +24,25 @@ export default function Home() {
 
   return (
     <div>
-      <p>Under development</p>
+      <section>
+        <h5 className="logo">weatha</h5>
+        <div className="weatherContent">
+          <div className="weatherSummary">
+            <h1 className="tempearature"></h1>
+            <div className="dateTimeLoc">
+              <h2 className="location"></h2>
+              <p className="dateTime"></p>
+            </div>
+            <div className="weatherRep">
+              {/* <Image /> */}
+              <p className="weatherDescription"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <aside>
+        <SearchBar />
+      </aside>
     </div>
   );
 }
