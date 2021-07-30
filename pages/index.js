@@ -7,21 +7,21 @@ export default function Home() {
   const [currentLocation, setCurrentLocation] = useState({});
 
   useEffect(() => {
-    const result = getLocationData();
-    if (result.error) {
-      alert("Error getting location data");
-    } else {
-      setCurrentLocation(result);
+    getLocationData(setCurrentLocation);
+    if ("error" in currentLocation) {
+      alert("Error Fetching Location");
+    } else if ("latitude" in currentLocation) {
       getWeatherByLatLng(currentLocation.latitude, currentLocation.longitude)
         .then((data) => {
           console.log(data);
         })
         .catch((error) => {
+          alert("Error accessing server");
           console.log(error);
         });
     }
     // TODO: Stop spinners
-  }, [currentLocation]);
+  }, [currentLocation.latitude]);
 
   return (
     <div>

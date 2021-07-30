@@ -1,21 +1,21 @@
-export default function getLocationData() {
+export default function getLocationData(locationDetailsSetter) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (postion) => {
-        return {
+        locationDetailsSetter({
           latitude: postion.coords.latitude,
           longitude: postion.coords.longitude,
-        };
+        });
       },
       (_) => {
-        return {
+        locationDetailsSetter({
           error: "Error fetching location",
-        };
+        });
       }
     );
   } else {
-    return {
+    locationDetailsSetter({
       error: "Location service not supported",
-    };
+    });
   }
 }
