@@ -29,7 +29,7 @@ export default function Home() {
           )
             .then((data) => {
               setHourlyForeCast(data);
-              // setIsFetching(false);
+              setIsFetching(false);
             })
             .catch((error) => {
               setErrorOccured(true);
