@@ -1,3 +1,4 @@
+import Image from "next/image";
 import HourlyWeatherListItem from "./HourlyWeatherListItem";
 import style from "../styles/HourlyList.module.css";
 
@@ -13,7 +14,12 @@ const HourlyWeatherList = ({ hourlyData }) => {
           });
         }}
       >
-        {"<"}
+        <Image
+          src="/left-chevron.svg"
+          width={30}
+          height={30}
+          alt={"Scroll Left"}
+        />
       </div>
       <div id="weather-list" className={style.weatherList}>
         {hourlyData.hourly.map((weatherData) => (
@@ -34,7 +40,12 @@ const HourlyWeatherList = ({ hourlyData }) => {
           });
         }}
       >
-        {">"}
+        <Image
+          src="/right-chevron.svg"
+          width={30}
+          height={30}
+          alt={"Scroll right"}
+        />
       </div>
     </div>
   );
