@@ -6,10 +6,9 @@ const HourlyWeatherListItem = (props) => {
     <div className={style.listItem}>
       <h3>{props.hour}</h3>
       <Image
-        className={style.weatherIcon}
         src={props.weatherIcon}
-        width={50}
-        height={50}
+        width="70px"
+        height="70px"
         alt="Weather Icon"
       />
       <h5>{props.temperature}</h5>
