@@ -1,8 +1,25 @@
 .flexContainer {
   display: flex;
   align-items: center;
+  width: 400px;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: #8383837e;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .flexContainer {
+    background-color: #83838349;
+    backdrop-filter: blur(10px);
+  }
 }
 
 .flexContainer > *:not(:last-child) {
   margin-right: 1rem;
+}
+
+.temperature,
+.cityName {
+  font-size: 2rem;
 }

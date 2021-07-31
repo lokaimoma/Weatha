@@ -19,7 +19,14 @@
 }
 
 .sideBar {
-  background-color: #f4f4f4;
+  background-color: #0202027e;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .sideBar {
+    background-color: #f4f4f459;
+    backdrop-filter: blur(10px);
+  }
 }
 
 .flexContainer {
