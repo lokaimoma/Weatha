@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Image } from "next/image";
 import SearchBar from "../components/SearchBar";
 import WeatherContent from "../components/WeatherContent";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
+import style from "../styles/index.module.css";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -46,23 +46,25 @@ export default function Home() {
   }, [currentLocation.latitude]);
 
   return (
-    <div>
-      <section>
-        <h5 className="logo">weatha</h5>
-        {isFetching && <p>Loading</p>}
-        {errorOccured && <p>Error</p>}
-        {!isFetching && !errorOccured && (
-          <WeatherContent
-            cityName={weatherData.cityName}
-            temperature={`${weatherData.main.temp} °C`}
-            dateTime={weatherData.dateTime}
-            weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-            weatherState={weatherData.weather[0].description}
-            hourlyData={hourlyForeCast}
-          />
-        )}
+    <div className={style.gridContainer}>
+      <section className={style.flexContainer}>
+        <h5 className={style.logo}>weatha</h5>
+        <div>
+          {isFetching && <p>Loading</p>}
+          {errorOccured && <p>Error</p>}
+          {!isFetching && !errorOccured && (
+            <WeatherContent
+              cityName={weatherData.cityName}
+              temperature={`${weatherData.main.temp} °C`}
+              dateTime={weatherData.dateTime}
+              weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+              weatherState={weatherData.weather[0].description}
+              hourlyData={hourlyForeCast}
+            />
+          )}
+        </div>
       </section>
-      <aside>
+      <aside className={style.sideBar}>
         <SearchBar query={query} setQuery={setQuery} submitHandler={() => {}} />
       </aside>
     </div>

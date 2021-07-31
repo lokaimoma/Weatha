@@ -1,0 +1,8 @@
+.flexContainer {
+  display: flex;
+  align-items: center;
+}
+
+.flexContainer > *:not(:last-child) {
+  margin-right: 1rem;
+}

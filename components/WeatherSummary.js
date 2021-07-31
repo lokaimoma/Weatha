@@ -1,8 +1,9 @@
 import Image from "next/image";
+import style from "../styles/WeatherSummary.module.css";
 
 const WeatherSummary = (props) => {
   return (
-    <div>
+    <div className={style.flexContainer}>
       <h2>{props.temperature}</h2>
       <div>
         <h3>{props.cityName}</h3>

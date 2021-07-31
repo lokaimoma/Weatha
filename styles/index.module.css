@@ -1,0 +1,35 @@
+.gridContainer {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 10%);
+  background: url("/bg.jpg") center / cover;
+  color: #fff;
+}
+
+.gridContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.432);
+}
+
+.gridContainer > * {
+  z-index: 1;
+}
+
+.sideBar {
+  background-color: #f4f4f4;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-left: 2rem;
+}
+
+.logo {
+  padding: 2rem;
+}

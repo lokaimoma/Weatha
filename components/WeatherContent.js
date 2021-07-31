@@ -8,7 +8,7 @@ const WeatherContent = (props) => {
         dateTime={props.dateTime}
         cityName={props.cityName}
         weatherIcon={props.weatherIcon}
-        weatherState={props.weatherDescription}
+        weatherState={props.weatherState}
       />
       <HourlyWeatherList hourlyData={props.hourlyData} />
     </>
