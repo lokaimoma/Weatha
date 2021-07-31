@@ -24,7 +24,7 @@
 
 @supports (backdrop-filter: blur(10px)) {
   .sideBar {
-    background-color: #f4f4f459;
+    background-color: #7070707e;
     backdrop-filter: blur(10px);
   }
 }
