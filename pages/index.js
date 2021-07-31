@@ -4,6 +4,7 @@ import WeatherContent from "../components/WeatherContent";
 import LoadingPlaceholder from "../components/LoadingPlaceholder";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
+import searchHandler from "../services/HandleSearch";
 import style from "../styles/index.module.css";
 
 export default function Home() {
@@ -70,7 +71,19 @@ export default function Home() {
         </div>
       </section>
       <aside className={style.sideBar}>
-        <SearchBar query={query} setQuery={setQuery} submitHandler={() => {}} />
+        <SearchBar
+          query={query}
+          setQuery={setQuery}
+          submitHandler={() => {
+            searchHandler(
+              setWeatherData,
+              setHourlyForeCast,
+              setIsFetching,
+              setErrorOccured,
+              query
+            );
+          }}
+        />
       </aside>
     </div>
   );
