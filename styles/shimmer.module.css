@@ -1,0 +1,81 @@
+.shimmerBackground {
+  background: rgb(255, 255, 255);
+  background-image: linear-gradient(
+    to right,
+    #eff1f3 4%,
+    #e2e2e2 25%,
+    #eff1f3 36%
+  );
+  background-repeat: no-repeat;
+  background-size: auto;
+  display: inline-block;
+  position: relative;
+
+  animation: placeholderShimmer 1s ease-in-out infinite forwards;
+}
+
+.temperature {
+  width: 50px;
+  height: 50px;
+}
+
+.text {
+  width: 200px;
+  height: 7px;
+}
+
+.text:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.photo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f498;
+  width: 500px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+  margin-left: 1.3rem;
+}
+
+.tile {
+  height: 100px;
+  width: 70px;
+  border-radius: 7px;
+}
+
+.tile:not(:last-child) {
+  margin-right: 10px;
+}
+
+.tileContainer {
+  width: max-content;
+  padding: 0.4rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 10px;
+  background-color: #f4f4f488;
+}
+
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -200px 0;
+  }
+
+  100% {
+    background-position: 200px 0;
+  }
+}

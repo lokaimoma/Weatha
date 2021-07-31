@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import WeatherContent from "../components/WeatherContent";
+import LoadingPlaceholder from "../components/LoadingPlaceholder";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
 import style from "../styles/index.module.css";
@@ -50,7 +51,11 @@ export default function Home() {
       <section className={style.flexContainer}>
         <h5 className={style.logo}>weatha</h5>
         <div>
-          {isFetching && <p>Loading</p>}
+          {isFetching && (
+            <div>
+              <LoadingPlaceholder />
+            </div>
+          )}
           {errorOccured && <p>Error</p>}
           {!isFetching && !errorOccured && (
             <WeatherContent
