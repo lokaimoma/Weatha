@@ -5,10 +5,12 @@ import LoadingPlaceholder from "../components/LoadingPlaceholder";
 import getLocationData from "../services/LocationService";
 import fetcher from "../services/Fetcher";
 import searchHandler from "../services/HandleSearch";
+import QueryList from "../components/QueryList";
 import style from "../styles/index.module.css";
 
 export default function Home() {
   const [query, setQuery] = useState("");
+  const [queryList, setQueryList] = useState([]);
   const [currentLocation, setCurrentLocation] = useState({});
   const [weatherData, setWeatherData] = useState({});
   const [hourlyForeCast, setHourlyForeCast] = useState({});
@@ -75,6 +77,7 @@ export default function Home() {
           query={query}
           setQuery={setQuery}
           submitHandler={() => {
+            setQueryList(Array.from(new Set([...queryList, query])));
             searchHandler(
               setWeatherData,
               setHourlyForeCast,
@@ -84,6 +87,7 @@ export default function Home() {
             );
           }}
         />
+        <QueryList queryList={queryList} />
       </aside>
     </div>
   );

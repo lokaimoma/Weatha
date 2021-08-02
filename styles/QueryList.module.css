@@ -1,0 +1,40 @@
+.listContainer {
+  padding: 0 2rem;
+  margin-top: 1rem;
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.hr {
+  margin-top: 10px;
+  border: 1px solid #fff;
+}
+
+.queryContainer {
+  padding: 0.5rem 0.2rem;
+  color: rgb(190, 190, 190);
+}
+
+.queryContainer:not(:first-child) {
+  margin-top: 0.15rem;
+}
+
+.queryContainer:hover {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slideIn {
+    animation: slide-in forwards 100ms ease-in-out;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
