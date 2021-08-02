@@ -10,4 +10,6 @@
   background-color: #adadad;
   text-align: center;
   height: auto;
+  flex-shrink: 0;
+  width: 60px;
 }

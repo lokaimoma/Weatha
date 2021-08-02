@@ -63,7 +63,7 @@ export default function Home() {
           {!isFetching && !errorOccured && (
             <WeatherContent
               cityName={weatherData.cityName}
-              temperature={`${weatherData.main.temp} °C`}
+              temperature={`${Math.round(weatherData.main.temp)} °C`}
               dateTime={weatherData.dateTime}
               weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               weatherState={weatherData.weather[0].description}
@@ -77,13 +77,14 @@ export default function Home() {
           query={query}
           setQuery={setQuery}
           submitHandler={() => {
-            setQueryList(Array.from(new Set([...queryList, query])));
             searchHandler(
               setWeatherData,
               setHourlyForeCast,
               setIsFetching,
               setErrorOccured,
-              query
+              query,
+              queryList,
+              setQueryList
             );
           }}
         />

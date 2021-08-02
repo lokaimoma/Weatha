@@ -5,7 +5,7 @@
   justify-content: center;
   padding: 0.5rem;
   border-radius: 10px;
-  background-color: #8383837e;
+  background-color: #c7c7c7a9;
 }
 
 .tileContainer {
@@ -14,7 +14,7 @@
 
 @supports (backdrop-filter: blur(10px)) {
   .flexContainer {
-    background-color: #83838349;
+    background-color: #e4e4e457;
     backdrop-filter: blur(10px);
   }
 }

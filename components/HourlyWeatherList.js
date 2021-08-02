@@ -27,7 +27,7 @@ const HourlyWeatherList = ({ hourlyData }) => {
             key={weatherData.dt}
             hour={weatherData.hour}
             weatherIcon={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-            temperature={`${weatherData.temperature} °C`}
+            temperature={`${Math.round(weatherData.temperature)} °C`}
           />
         ))}
       </div>
