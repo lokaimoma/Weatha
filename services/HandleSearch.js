@@ -5,13 +5,34 @@ export default function searchHandler(
   setHourlyforecast,
   setIsFetching,
   setErrorOccured,
-  query
+  query,
+  queryList,
+  setQueryList
 ) {
   setIsFetching(true);
   setErrorOccured(false);
   fetcher(`/api/weatherData/current/${query}`)
     .then((data) => {
       setWeatherData(data);
+      if (queryList.length < 5) {
+        setQueryList(
+          Array.from(
+            new Set([...queryList, { query, temp: `${data.main.temp} °C` }])
+          )
+        );
+      } else {
+        setQueryList(
+          Array.from(
+            new Set([
+              queryList[1],
+              queryList[2],
+              queryList[3],
+              queryList[4],
+              { query, temp: `${data.main.temp} °C` },
+            ])
+          )
+        );
+      }
       fetcher(`/api/weatherData/hourly/${data.coord.lat}/${data.coord.lon}`)
         .then((data) => {
           setHourlyforecast(data);

@@ -1,8 +1,7 @@
 .listContainer {
   padding: 0 2rem;
   margin-top: 1rem;
-  overflow-y: scroll;
-  height: 500px;
+  height: auto;
 }
 
 .hr {
@@ -13,14 +12,13 @@
 .queryContainer {
   padding: 0.5rem 0.2rem;
   color: rgb(190, 190, 190);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
 .queryContainer:not(:first-child) {
   margin-top: 0.15rem;
-}
-
-.queryContainer:hover {
-  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
