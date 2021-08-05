@@ -89,6 +89,7 @@ export default function Home() {
           }}
         />
         <QueryList queryList={queryList} />
+
       </aside>
     </div>
   );

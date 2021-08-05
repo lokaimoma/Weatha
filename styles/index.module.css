@@ -7,6 +7,12 @@
   color: #fff;
 }
 
+@media (max-width: 731px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
 .gridContainer::before {
   content: "";
   position: absolute;

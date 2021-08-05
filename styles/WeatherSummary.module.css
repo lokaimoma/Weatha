@@ -19,11 +19,14 @@
   }
 }
 
-.flexContainer > *:not(:last-child) {
-  margin-right: 1rem;
-}
+@media (max-width: 466px) {
+  .flexContainer {
+    width: 90%;
+    justify-content: space-between;
+  }
 
-.temperature,
-.cityName {
-  font-size: 2rem;
+  .temperature,
+  .cityName {
+    font-size: 1.7rem;
+  }
 }
